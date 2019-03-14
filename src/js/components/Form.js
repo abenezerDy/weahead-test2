@@ -22,12 +22,14 @@ class ReportForm extends React.PureComponent {
   ) => {
     const { store, clearEdit } = this.props;
     if (values.id) {
+      resetForm();
+      clearEdit();
+
       return store.update({
         ...values,
         project: parseInt(values.project),
         activity: parseInt(values.activity)
       });
-      clearEdit();
     } else {
       resetForm();
       return store.add({
